@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <BuscarContato @setBusca="setBusca" />
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Avatar</th>
@@ -12,13 +12,13 @@
         </thead>
         <tbody>
             <tr v-for="contato in listaContatos" :key="contato.id">
-                <td>
+                <td class="text-center">
                     <img class="avatar" :src="contato.avatarURL" />
                 </td>
                 <td>{{contato.name}}</td>
                 <td>{{contato.email}}</td>
-                <td>
-                    <a href="#" @click.prevent="getApagar(contato.id)">Delete</a>
+                <td class="text-center">
+                    <a class="btn" href="#" @click.prevent="getApagar(contato.id)">Apagar</a>
                 </td>
             </tr>
         </tbody>
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import axios from 'axios'
 import BuscarContato from '@/components/BuscarContato'
 
@@ -74,6 +73,35 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.home
+    margin 20px auto
+    width 980px
 .avatar
     width 100px
+.text-center
+    text-align center
+.table
+    border solid 1px #DDEEEE
+    border-collapse collapse
+    border-spacing 0
+    width 100%
+    thead th
+        background-color: #DDEFEF
+        border: solid 1px #DDEEEE
+        color: #336B6B
+        padding: 10px
+        text-align: left
+
+    tbody td
+        border: solid 1px #DDEEEE
+        color: #333
+        padding: 10px
+        text-shadow: 1px 1px 1px #fff
+.btn
+    display block
+    padding 10px 20px
+    color #336b6b
+    background #E1EFF7
+    border solid 1px #dee
+    text-decoration none
 </style>
